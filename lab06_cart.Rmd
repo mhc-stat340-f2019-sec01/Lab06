@@ -1,0 +1,78 @@
+---
+title: "Lab 6 - Classification and Regression Trees"
+author: ""
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- Note: All R code has to go inbetween the line that looks like ```{r} and the line that looks like ```!! -->
+
+## Loading Packages
+
+Run the code chunk below to load packages needed for this lab.
+
+```{r}
+library(dplyr)
+library(ISLR)
+library(rpart)
+```
+
+This lab is adapted from Exercise 8.9 in ISLR.
+
+## Orange Juice Purchases
+
+The `OJ` data frame that comes with the ISLR package "contains 1070 purchases where the customer either purchased Citrus Hill or Minute Maid Orange Juice. A number of characteristics of the customer and product are recorded."
+
+```{r}
+head(OJ)
+dim(OJ)
+
+set.seed(71490)
+train_inds <- caret::createDataPartition(OJ$Purchase, p = 0.8)
+OJ_train <- OJ %>% dplyr::slice(train_inds[[1]])
+OJ_test <- OJ %>% dplyr::slice(-train_inds[[1]])
+```
+
+The `Purchase` variable specifies which brand of orange juice the customer purchased (CH for Citrus Hill or MM for Minute Maid).  See the help file (`?OJ`) for descriptions of the other variables.
+
+#### Problem 1: Fit a classification tree to the training data with `Purchase` as the response.  Use cross-validation to select the penalty parameter `cp`.  You can have the train function do cross-validation for you, you don't need to implement cross-validation yourself.  Make a plot of classification accuracy vs. cp.
+
+```{r}
+
+```
+
+#### Problem 2: What is the predicted value for a customer with the characteristics given in the data frame below?  You should know how to solve this problem using the `predict` function and by tracing through a picture of the estimated tree.
+
+```{r}
+test_customer_problem3 <- data.frame(
+  WeekofPurchase = 245,
+  StoreID = 7,
+  PriceCH = 1.90, 
+  PriceMM = 2.09,
+  DiscCH = 0,
+  DiscMM = 0,
+  SpecialCH = 0,
+  SpecialMM = 0, 
+  LoyalCH = 0.58031,
+  SalePriceMM = 2.09,
+  SalePriceCH = 1.9,
+  PriceDiff = 0.19,
+  Store7 = factor("Yes", levels = c("No", "Yes")),
+  PctDiscMM = 0,
+  PctDiscCH = 0, 
+  ListPriceDiff = 0.19,
+  STORE = 0)
+```
+
+```{r}
+
+```
+
+#### Problem 3: Find the test set error rate for the classification tree.
+
+```{r}
+
+```
